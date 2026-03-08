@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Protocolo Clínico de Admisión</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f6f8;
+      margin: 0;
+      padding: 20px;
+      color: #222;
+    }
+
+    .contenedor {
+      max-width: 900px;
+      margin: auto;
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    }
+
+    h1, h2 {
+      color: #1d3557;
+    }
+
+    .pregunta {
+      margin-bottom: 20px;
+      padding: 15px;
+      border: 1px solid #ddd;
+      border-radius: 10px;
+      background: #fafafa;
+    }
+
+    .pregunta p {
+      margin: 0 0 10px 0;
+      font-weight: bold;
+    }
+
+    label {
+      display: block;
+      margin: 6px 0;
+      cursor: pointer;
+    }
+
+    button {
+      background: #1d3557;
+      color: white;
+      border: none;
+      padding: 12px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background: #16324a;
+    }
+
+    .resultado {
+      margin-top: 25px;
+      padding: 18px;
+      border-radius: 10px;
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .verde {
+      background: #d8f3dc;
+      color: #1b4332;
+      border: 1px solid #95d5b2;
+    }
+
+    .amarillo {
+      background: #fff3cd;
+      color: #856404;
+      border: 1px solid #ffe69c;
+    }
+
+    .rojo {
+      background: #f8d7da;
+      color: #842029;
+      border: 1px solid #f1aeb5;
+    }
+
+    .error {
+      color: red;
+      font-size: 14px;
+      margin-top: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="contenedor">
+    <h1>Protocolo Clínico de Admisión</h1>
+    <p>Evaluación previa para procesos con medicina ancestral</p>
+
+    <form id="formulario">
+
+      <h2>1. Salud mental actual</h2>
+
+      <div class="pregunta">
+        <p>1. Diagnóstico actual de psicosis, esquizofrenia o bipolaridad activa</p>
+        <label><input type="radio" name="p1" value="0"> Sí</label>
+        <label><input type="radio" name="p1" value="2"> No</label>
+      </div>
+
+      <div class="pregunta">
+        <p>2. Episodios psicóticos en el pasado</p>
+        <label><input type="radio" name="p2" value="0"> Sí</label>
+        <label><input type="radio" name="p2" value="1"> Sospecha o episodio aislado</label>
+        <label><input type="radio" name="p2" value="2"> No</label>
+      </div>
+
+      <div class="pregunta">
+        <p>3. Ideación suicida actual</p>
+        <label><input type="radio" name="p3" value="0"> Sí</label>
+        <label><input type="radio" name="p3" value="2"> No</label>
+      </div>
+
+      <div class="pregunta">
+        <p>4. Intentos de suicidio previos</p>
+        <label><input type="radio" name="p4" value="0"> Sí reciente</label>
+        <label><input type="radio" name="p4" value="1"> Antiguo</label>
+        <label><input type="radio" name="p4" value="2"> No</label>
+      </div>
+
+      <div class="pregunta">
+        <p>5. Depresión actual</p>
+        <label><input type="radio" name="p5" value="0"> Severa</label>
+        <label><input type="radio" name="p5" value="1"> Moderada</label>
+        <label><input type="radio" name="p5" value="2"> Leve o ausente</label>
+      </div>
+
+      <div class="pregunta">
+        <p>6. Ansiedad intensa reciente</p>
+        <label><input type="radio" name="p6" value="0"> Frecuente o incapacitante</label>
+        <label><input type="radio" name="p6" value="1"> Moderada</label>
+        <label><input type="radio" name="p6" value="2"> Baja o ausente</label>
+      </div>
+
+      <div class="pregunta">
+        <p>7. Ataques de pánico recientes</p>
+        <label><input type="radio" name="p7" value="0"> Frecuentes</label>
+        <label><input type="radio" name="p7" value="1"> Ocasionales</label>
+        <label><input type="radio" name="p7" value="2"> No</label>
+      </div>
+
+      <div class="pregunta">
+        <p>8. Episodios de despersonalización o disociación</p>
+        <label><input type="radio" name="p8" value="0"> Frecuentes</label>
+        <label><input type="radio" name="p8" value="1"> Ocasionales</label>
+        <label><input type="radio" name="p8" value="2"> No</label>
+      </div>
+
+      <div class="pregunta">
+        <p>9. Regulación emocional</p>
+        <label><input type="radio" name="p9" value="0"> Muy baja</label>
+        <label><input type="radio" name="p9" value="1"> Media</label>
+        <label><input type="radio" name="p9" value="2"> Buena</label>
+      </div>
+
+      <div class="pregunta">
+        <p>10. Capacidad para afrontar experiencias emocionales intensas</p>
+        <label><input type="radio" name="p10" value="0"> Muy limitada</label>
+        <label><input type="radio" name="p10" value="1"> Moderada</label>
+        <label><input type="radio" name="p10" value="2"> Buena</label>
+      </div>
+
+      <button type="button" onclick="calcularResultado()">Calcular resultado</button>
+    </form>
+
+    <div id="resultado"></div>
+  </div>
+
+  <script>
+    function calcularResultado() {
+      let total = 0;
+      const totalPreguntas = 10; // cambia esto a 60 cuando pongas todas
+      const resultado = document.getElementById("resultado");
+
+      for (let i = 1; i <= totalPreguntas; i++) {
+        const seleccion = document.querySelector(`input[name="p${i}"]:checked`);
+
+        if (!seleccion) {
+          resultado.innerHTML = `<div class="resultado rojo">Falta responder la pregunta ${i}.</div>`;
+          return;
+        }
+
+        total += parseInt(seleccion.value);
+      }
+
+      let clase = "";
+      let mensaje = "";
+
+      if (total >= 100 && total <= 120) {
+        clase = "verde";
+        mensaje = "🟢 APTO. Puede participar con acompañamiento estándar.";
+      } else if (total >= 80 && total <= 99) {
+        clase = "amarillo";
+        mensaje = "🟡 Evaluación adicional / apto con precauciones. Se recomienda entrevista clínica adicional y seguimiento posterior.";
+      } else {
+        clase = "rojo";
+        mensaje = "🔴 NO APTO. Se recomienda no participar en la experiencia y considerar acompañamiento terapéutico.";
+      }
+
+      resultado.innerHTML = `
+        <div class="resultado ${clase}">
+          Puntaje total: ${total}<br><br>
+          ${mensaje}
+        </div>
+      `;
+    }
+  </script>
+</body>
+</html>
